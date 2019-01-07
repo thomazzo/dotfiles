@@ -7,6 +7,7 @@ Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree', {'on' : 'NERDTreeToggle'}
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
@@ -23,7 +24,7 @@ Plug 'tpope/vim-eunuch'
 call plug#end()
 
 set guicursor=
-colorscheme gruvbox
+colorscheme gruvbox 
 set background=dark
 set number
 
@@ -62,7 +63,7 @@ let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 " nerdtree settings
-nnoremap <C-N> :NERDTreeToggle<CR>
+nnoremap <C-N> :nohl<CR>
 
 let g:ale_fixers = {}
 let g:ale_fixers['go'] = ['gofmt']
@@ -71,7 +72,7 @@ let g:ale_javascript_prettier_options = '--no-semi --single-quote'
 
 let g:ale_fixers.python = ['autopep8']
 let g:ale_python_autopep8_options = '--max-line-length 300'
-let g:ale_python_mypy_options = '--python-version=3.6 --ignore-missing-imports'
+let g:ale_python_mypy_options = '--ignore-missing-imports'
 let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
 let g:ale_python_flake8_options = '-m flake8 --max-line-length 300'
 nnoremap <Leader>f :ALEFix<CR>
@@ -81,7 +82,13 @@ nnoremap <Leader>c :lclose<CR>
 " enable max python highlighting
 let g:python_highlight_all = 1
 
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
 nnoremap <C-P> :FZF<CR>
+nnoremap <C-B> :Buffers<CR>
+
+" Grep
+nnoremap <Leader>r :Rg <C-R><C-W><CR>
 
 " enable jsx syntax in js files (not only jsx)
 let g:jsx_ext_required = 0
